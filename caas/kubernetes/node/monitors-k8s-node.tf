@@ -168,7 +168,7 @@ resource "datadog_monitor" "unregister_net_device" {
   type    = "event-v2 alert"
 
   query = <<EOQ
-    events('sources:kubernetes priority:all ${module.filter-tags.event_alert} \"UnregisterNetDevice\"').rollup('count').last('${var.unregister_net_device_timeframe}') > ${var.unregister_net_device_threshold_critical}
+    events('sources:kubernetes @priority:* ${module.filter-tags.event_alert} \"UnregisterNetDevice\"').rollup('count').last('${var.unregister_net_device_timeframe}') > ${var.unregister_net_device_threshold_critical}
 EOQ
 
   new_host_delay    = var.new_host_delay
