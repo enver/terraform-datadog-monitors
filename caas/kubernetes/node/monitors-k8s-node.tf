@@ -178,6 +178,7 @@ EOQ
   notify_audit      = false
   timeout_h         = var.timeout_h
   include_tags      = true
+  validate          = false
 
   tags = concat(["env:${var.environment}", "type:caas", "provider:kubernetes", "resource:kubernetes-node", "team:claranet", "created-by:terraform"], var.unregister_net_device_extra_tags)
 }
